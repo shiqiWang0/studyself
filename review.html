@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        .aclass{
+            color: red;
+            font-size: 20px;
+        }
+        .bclass {
+            color: greenyellow;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2> 大括号表示数据</h2>
+        <div>
+            <input type="text" v-model="msg"/>
+            <p>{{msg.toUpperCase()}}</p>
+        </div>
+        <h2>强制数据绑定</h2>
+        <div>
+            <img v-bind:src='imgUrl' alt=""/>
+            <img :src="imgUrl" alt=""/>
+        </div>
+        <h2>绑定事件监听</h2>
+        <button @click="btn">点我一下</button>
+        <hr>
+        <p>firstName: <input type="text" v-model='first'/></p>
+        <p>lastName: <input type="text"  v-model='last'/></p>
+        <p>fullName1(单项)：<input type="text" v-model='full'/></p>
+        <p>fullName2(单项): <input type="text" v-model='fullAn'/></p>
+        <p>fullName3: <input type="text" v-model='fullDoub'/></p>
+        <hr>
+        <h2>强制绑定类名</h2>
+        <p :class="css">我是最美丽的人儿</p>
+        <button @click="update">更新</button>
+        <p :class='{aclass:aclass,bclass:bclass}'>我是红色</p>
+        <hr>
+        <h2>循环完成数据的添加删除更新</h2>
+        <ul>
+            <li v-for='(value,index) of persons' :key='index'>
+                {{index}}--{{value.name}}--{{value.age}}
+                <button @click='del(index)'>删除</button>
+                <button @click='up(index,{name:"add",age:0})'>更新</button>
+            </li>
+        </ul>
+        <!--对象v-for 遍历的时候，第一参数是对象的属性值，第二个参数是属性名-->
+        <hr/>
+        <h2>进行数据的过滤与排序</h2>
+        <div>
+            <input type="text" v-model='searchName'/>
+            <ul>
+                <li v-for='(item,key) in filterPersons' :key="key">
+                    {{key}}--{{item.name}}--{{item.age}}
+                </li>
+            </ul>
+            <button @click="getOption(1)">升序排序</button>
+            <button @click='getOption(2)'>降序排序</button>
+            <button @click="getOption(0)">原来顺序</button>
+        </div>
+
+    </div>
+    <script src="js/review.js"></script>
+</body>
+</html>

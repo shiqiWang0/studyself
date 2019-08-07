@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        .trshow-enter-active,.trshow-leave-active {
+            transition: opacity 0.5s;
+        }
+        .trshow-enter,.trshow-leave-to {
+            opacity: 0;
+        }
+        .trmove-enter-active,.trmove-leave-active{
+            transition: all 2s;
+        }
+        .trmove-enter,.trmove-leave-to{
+            opacity: 0;
+            transform:  translateX(200px);
+
+        }
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <button @click="handelClick">toggle</button>
+    <transition name='trshow'>
+        <p v-show='bool'>{{msg}}</p>
+    </transition>
+    <button @click='handeltran'>toggle</button>
+    <transition name='trmove'>
+        <p v-show='bool'>{{title}}</p>
+    </transition>
+    <button @click="handleScale">scale</button><br>
+    <transition name='bounce'>
+        <p v-show='bool' style="display: inline-block">{{msg}}</p>
+    </transition>
+
+
+</div>
+<script src="js/transition.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .outer {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+  <div id="root">
+      <h3>事件绑定</h3>
+      <button @click='btn1'>text1</button>
+      <button @click='btn2("hello")'>text2</button>
+      <button @click='btn3'>text3</button>
+      <button @click='btn4(123)'>text4</button>
+      <h3>事件处理</h3>
+      <div class="outer" @click='btn6'>
+          <div class="inner" @click.stop='btn5'></div>
+      </div>
+      <a href="http://www.baidu.com" @click.prevent='btn7'>去百度</a>
+      <h3>按键修饰符</h3>
+      <input type="text" @keyup.enter='keyup'/>
+      <br/><br/>
+      <hr/>
+      <h3>表单数据的自动收集 v-model</h3>
+
+      <form action="" @submit='handelSubmit'>
+          <p>姓名：<input type="text" v-model='username'/></p>
+          <p>密码：<input type="password" v-model="password"/></p>
+          <p>性别：<input type="radio"  id="male" value="male"  v-model='sex'/>男
+                   <input type="radio" id="female" value="female"  v-model='sex'/>女
+          </p>
+          <p>爱好：<input type="checkbox" value="football" v-model='likes'/>足球
+                  <input type="checkbox" value="basketball" v-model='likes'/>篮球
+                  <input type="checkbox" value="pingpang" v-model='likes'/>乒乓
+          </p>
+          <p>
+              <select name="city" id="sel" v-model='citiId'>
+                  <option value="">未选择</option>
+                  <option :value='item.id'
+                          v-for='(item,key) in cities'
+                          :key='key'
+                          >{{item.cityN}}</option>
+              </select>
+          </p>
+          <p>
+              <textarea name="" id="text" cols="30" rows="10" v-model="desc"></textarea>
+          </p>
+          <input type="submit"/>
+      </form>
+
+  </div>
+  <script src="js/event.js"></script>
+</body>
+</html>

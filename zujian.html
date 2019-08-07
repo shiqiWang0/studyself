@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="components-demo">
+        <button-counter></button-counter>
+        <blog-post
+        v-for='post in posts'
+        v-bind:key='post.id' 
+        v-bind:title="post.title"
+        ></blog-post>
+    </div>
+    <alert-box>Something bad happen</alert-box>
+
+    <script src="js/zujian.js"></script>
+</body>
+</html>
